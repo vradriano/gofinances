@@ -1,6 +1,8 @@
 import styled from "styled-components/native";
 import { Feather } from '@expo/vector-icons'
 import { RFValue } from "react-native-responsive-fontsize";
+import { getBottomSpace } from 'react-native-iphone-x-helper';
+
 
 interface TransactionProps {
   type: 'positive' | 'negative'
