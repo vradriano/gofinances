@@ -21,6 +21,7 @@ import {
 export function Dashboard() {
   const data = [
     {
+      type: 'positive',
       title: "Desenvolvimento de software",
       amount: "R$ 12.000,00",
       category: {
@@ -30,20 +31,22 @@ export function Dashboard() {
       date: '13/04/2022'
     },
     {
-      title: "Desenvolvimento de software",
-      amount: "R$ 12.000,00",
+      type: 'negative',
+      title: "Outback",
+      amount: "R$ 59,00",
       category: {
-        name: 'Vendas',
-        icon: 'dollar-sign'
+        name: 'Alimentação',
+        icon: 'coffee'
       },
       date: '13/04/2022'
     },
     {
-      title: "Desenvolvimento de software",
-      amount: "R$ 12.000,00",
+      type: 'negative',
+      title: "Aluguel do apartamento",
+      amount: "R$ 1.200,00",
       category: {
-        name: 'Vendas',
-        icon: 'dollar-sign'
+        name: 'Casa',
+        icon: 'shopping-bag'
       },
       date: '13/04/2022'
     }
