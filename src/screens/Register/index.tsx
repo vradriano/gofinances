@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { Input } from '../../components/Forms/Input';
 import { Button } from '../../components/Forms/Button';
 import { TransactionTypeButton } from '../../components/Forms/TransactionTypeButton';
+import { CategorySelect } from '../../components/Forms/CategorySelect';
 import { Container, Header, Title, Form, Fields, TransactionTypes } from './styles'
 
 export function Register() {
@@ -43,6 +44,8 @@ export function Register() {
             />
           </TransactionTypes>
 
+
+          <CategorySelect title='Categoria' />
         </Fields>
 
         <Button title="Enviar" />
