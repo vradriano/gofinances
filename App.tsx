@@ -1,8 +1,9 @@
 import * as SplashScreen from 'expo-splash-screen';
 
-import { Register } from './src/screens/Register'
 
 import { ThemeProvider } from 'styled-components/native';
+import { NavigationContainer } from '@react-navigation/native'
+import { AppRoutes } from './src/routes/app.routes';
 import {
   useFonts,
   Poppins_400Regular,
@@ -29,7 +30,9 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Register />
+      <NavigationContainer>
+        <AppRoutes />
+      </NavigationContainer>
     </ThemeProvider>
   )
 }
