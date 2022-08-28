@@ -1,5 +1,7 @@
-import * as SplashScreen from 'expo-splash-screen';
+import 'react-native-gesture-handler'
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
+import * as SplashScreen from 'expo-splash-screen';
 
 import { ThemeProvider } from 'styled-components/native';
 import { NavigationContainer } from '@react-navigation/native'
@@ -29,10 +31,12 @@ export default function App() {
   SplashScreen.hideAsync();
 
   return (
-    <ThemeProvider theme={theme}>
-      <NavigationContainer>
-        <AppRoutes />
-      </NavigationContainer>
-    </ThemeProvider>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <ThemeProvider theme={theme}>
+        <NavigationContainer>
+          <AppRoutes />
+        </NavigationContainer>
+      </ThemeProvider>
+    </GestureHandlerRootView>
   )
 }

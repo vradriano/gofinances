@@ -63,8 +63,6 @@ export function Register() {
       category: category.key
     }
 
-    console.log(data)
-    
   }
 
   function handleOpenSelectCategoryModal() {
