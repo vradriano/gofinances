@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {
   Alert,
   Keyboard,
@@ -52,9 +52,8 @@ export function Register() {
     name: 'Categoria',
   })
 
-  const dataKey = '@gofinances:transactions'
 
-  const handleTransactionsTypeSelect = (type: 'up' | 'down') => {
+  const handleTransactionsTypeSelect = (type: 'positive' | 'negative') => {
     setTransactionType(type)
   }
 
@@ -70,12 +69,14 @@ export function Register() {
       id: String(uuid.v4()),
       name: form.name,
       amount: form.amount,
-      transactionType,
+      type: transactionType,
       category: category.key,
       date: new Date()
     }
 
     try {
+      const dataKey = '@gofinances:transactions'
+
       const data = await AsyncStorage.getItem(dataKey)
       const currentData = data ? JSON.parse(data) : []
 
@@ -99,15 +100,6 @@ export function Register() {
       Alert.alert('Não foi possível salvar')
     }
   }
-
-  useEffect(() => {
-    async function loadData() {
-      const data = await AsyncStorage.getItem(dataKey)
-      console.log(JSON.parse(data!))
-    }
-
-    loadData()
-  }, [])
 
   function handleOpenSelectCategoryModal() {
     setCategoryModalOpen(true)
@@ -148,14 +140,14 @@ export function Register() {
               <TransactionTypeButton
                 type='up' 
                 title='Income'
-                onPress={() => handleTransactionsTypeSelect('up')}
-                isActive={transactionType === 'up'}
+                onPress={() => handleTransactionsTypeSelect('positive')}
+                isActive={transactionType === 'positive'}
               />
               <TransactionTypeButton
                 type='down' 
                 title='Outcome' 
-                onPress={() => handleTransactionsTypeSelect('down')}
-                isActive={transactionType === 'down'}
+                onPress={() => handleTransactionsTypeSelect('negative')}
+                isActive={transactionType === 'negative'}
               />
             </TransactionTypes>
 
