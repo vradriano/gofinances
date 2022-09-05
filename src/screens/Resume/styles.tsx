@@ -53,3 +53,9 @@ export const MonthSelectButton = styled<any>(BorderlessButton)``;
 export const MonthSelectIcon = styled(Feather)`
   font-size: ${RFValue(24)}px;
 `;
+
+export const LoadContainer = styled.View`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+`

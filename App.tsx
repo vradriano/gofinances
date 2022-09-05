@@ -1,6 +1,7 @@
 import 'react-native-gesture-handler'
 import 'intl'
 import 'intl/locale-data/jsonp/pt-BR'
+import { StatusBar } from 'react-native'
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import * as SplashScreen from 'expo-splash-screen';
@@ -36,6 +37,9 @@ export default function App() {
     <GestureHandlerRootView style={{ flex: 1 }}>
       <ThemeProvider theme={theme}>
         <NavigationContainer>
+          <StatusBar 
+            barStyle='light-content'
+          />
           <AppRoutes />
         </NavigationContainer>
       </ThemeProvider>
