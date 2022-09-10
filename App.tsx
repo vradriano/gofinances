@@ -17,6 +17,7 @@ import {
 } from '@expo-google-fonts/poppins'
 
 import theme from './src/global/styles/theme'
+import { SignIn } from './src/screens/SignIn'
 
 
 export default function App() {
@@ -40,7 +41,7 @@ export default function App() {
           <StatusBar 
             barStyle='light-content'
           />
-          <AppRoutes />
+          <SignIn />
         </NavigationContainer>
       </ThemeProvider>
     </GestureHandlerRootView>
