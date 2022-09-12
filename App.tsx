@@ -18,6 +18,7 @@ import {
 
 import theme from './src/global/styles/theme'
 import { SignIn } from './src/screens/SignIn'
+import { AuthProvider } from './src/hooks/auth';
 
 
 export default function App() {
@@ -41,7 +42,11 @@ export default function App() {
           <StatusBar 
             barStyle='light-content'
           />
-          <SignIn />
+
+          <AuthProvider>
+            <SignIn />
+          </AuthProvider>
+          
         </NavigationContainer>
       </ThemeProvider>
     </GestureHandlerRootView>
