@@ -7,7 +7,7 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import * as SplashScreen from 'expo-splash-screen';
 
 import { ThemeProvider } from 'styled-components/native';
-import { NavigationContainer } from '@react-navigation/native'
+import { Routes } from './src/routes'
 import { AppRoutes } from './src/routes/app.routes';
 import {
   useFonts,
@@ -38,16 +38,12 @@ export default function App() {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <ThemeProvider theme={theme}>
-        <NavigationContainer>
           <StatusBar 
             barStyle='light-content'
           />
-
           <AuthProvider>
-            <SignIn />
+            <Routes />
           </AuthProvider>
-          
-        </NavigationContainer>
       </ThemeProvider>
     </GestureHandlerRootView>
   )
