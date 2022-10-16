@@ -24,6 +24,9 @@ interface AuthorizationResponse {
   type: string;
 }
 
+const { CLIENT_ID } = process.env
+const { REDIRECT_URI } = process.env
+
 export const AuthContext = createContext({} as IAuthContextData)
 
 function AuthProvider({ children }: AuthProviderProps) {
@@ -31,8 +34,6 @@ function AuthProvider({ children }: AuthProviderProps) {
 
   async function signInWithGoogle() {
     try {
-      const CLIENT_ID = '489336174426-aebs46ifihf67cmklj3iemealfsce2bq.apps.googleusercontent.com';
-      const REDIRECT_URI = 'https://auth.expo.io/@vradriano/gofinances';
       const RESPONSE_TYPE = 'token';
       const SCOPE = encodeURI('profile email');
 
@@ -45,6 +46,8 @@ function AuthProvider({ children }: AuthProviderProps) {
       if(type === 'success') {
         const response = await fetch(`https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=${params.access_token}`)
         const userInfo = await response.json()
+
+        console.log(userInfo)
 
         setUser({
           id: userInfo.id,
