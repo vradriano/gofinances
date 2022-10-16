@@ -22,6 +22,7 @@ import {
 } from './styles'
 import { ActivityIndicator } from 'react-native';
 import { useTheme } from 'styled-components';
+import { useAuth } from '../../hooks/auth';
 
 export interface DataListProps extends TransactionCardProps {
   id: string;
@@ -42,6 +43,7 @@ export function Dashboard() {
   const [isLoading, setIsLoading] = useState(true);
   const [transactions, setTransactions] = useState<DataListProps[]>([]);
   const [highlightData, setHighLightData] = useState<HighLightData>({} as HighLightData);
+  const { user, signOut } = useAuth()
 
   const theme = useTheme()
   
@@ -163,17 +165,17 @@ export function Dashboard() {
           <UserWrapper>
             <UserInfo>
               <Photo 
-                source={{ uri: 'https://avatars.githubusercontent.com/u/90075349?v=4' }} 
+                source={{ uri: user.photo }} 
                 
               />
               <User>
                 <UserGreetings>Olá, </UserGreetings>
-                <UserName>Vitor</UserName>
+                <UserName>{user.name}</UserName>
               </User>
             </UserInfo>
 
 
-            <LogoutButton onPress={() => {}}>
+            <LogoutButton onPress={signOut}>
               <Icon name="power" />
             </LogoutButton>
           </UserWrapper>
