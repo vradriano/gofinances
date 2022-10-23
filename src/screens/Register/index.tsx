@@ -8,9 +8,12 @@ import {
 import * as Yup from 'yup'
 import uuid from 'react-native-uuid'
 import { yupResolver } from '@hookform/resolvers/yup'
+
 import { useForm } from 'react-hook-form'
-import AsyncStorage from '@react-native-async-storage/async-storage'
+import { useAuth } from '../../hooks/auth';
 import { useNavigation } from '@react-navigation/native'
+
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 import { InputForm } from '../../components/Forms/InputForm';
 import { Button } from '../../components/Forms/Button';
@@ -46,6 +49,7 @@ export function Register() {
   const navigation = useNavigation<NavigationProps>()
   const [transactionType, setTransactionType] = useState('')
   const [categoryModalOpen, setCategoryModalOpen] = useState(false)
+  const { user } = useAuth()
 
   const [category, setCategory] = useState({
     key: 'category',
@@ -75,8 +79,7 @@ export function Register() {
     }
 
     try {
-      const dataKey = '@gofinances:transactions'
-
+      const dataKey = `@gofinances:transactions_user:${user.id}`
       const data = await AsyncStorage.getItem(dataKey)
       const currentData = data ? JSON.parse(data) : []
 
